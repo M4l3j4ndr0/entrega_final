@@ -1,0 +1,18 @@
+{% extends 'entrega_final_app/base.html'%}
+
+
+{%block titulo%} Listado de Notas {%endblock%}
+
+
+{%block listado%}
+
+
+
+    <ul>
+        {%  for nota in notas %}
+            <li>{{nota}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block title %} Notas {% endblock %}

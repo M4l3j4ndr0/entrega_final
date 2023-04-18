@@ -1,0 +1,26 @@
+{% extends 'entrega_final_app/base.html' %}
+
+{% block title %} Notas {% endblock %}
+
+{% block titulo %} Busqueda de Notas por materia {%endblock%}
+
+{%block listado%}
+
+<form>
+    <p>
+        <label for = "criterio_materia"> Criterio:</label>
+        <input type="text" name="criterio_materia" maxlength="100" required="" id="criterio_materia">
+    </p>
+    <p>
+        <input type="submit" value="Buscar">
+    </p>
+</form>
+
+<ul>
+    {% for nota in notas %}
+        <li> {{nota}} </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block endtitle %} listado de notas {% endblock %}

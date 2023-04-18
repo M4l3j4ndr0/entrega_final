@@ -1,0 +1,15 @@
+{% extends 'emtrega_final_app/base.html'%}
+
+
+{%block titulo%} Listado de usuarios {%endblock%}
+
+
+{%block listado%}
+    <ul>
+        {%  for usuario in usuarios %}
+            <li>{{usuario}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block title %} Usuarios {% endblock %}

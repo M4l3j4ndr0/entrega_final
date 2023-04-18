@@ -1,0 +1,18 @@
+{% extends 'entrega_final_app/base.html'%}
+
+
+{%block titulo%} Listado de elementos {%endblock%}
+
+
+{%block listado%}
+
+
+
+    <ul>
+        {%  for elemento in elementos %}
+            <li>{{elemento}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block title %} Elementos {% endblock %}

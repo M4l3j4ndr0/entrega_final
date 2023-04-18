@@ -1,0 +1,26 @@
+{% extends 'entrega_final_app/base.html' %}
+
+{% block title %} Elementos {% endblock %}
+
+{% block titulo %} Busqueda de elementos por categoria{%endblock%}
+
+{%block listado%}
+
+<form>
+    <p>
+        <label for = "criterio_categoria"> Criterio:</label>
+        <input type="text" name="criterio_categoria" maxlength="100" required="" id="criterio_categoria">
+    </p>
+    <p>
+        <input type="submit" value="Buscar">
+    </p>
+</form>
+
+<ul>
+    {% for elemento in elementos %}
+        <li> {{elemento}} </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block endtitle %} Buscar elementos {% endblock %}
