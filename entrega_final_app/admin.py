@@ -1,6 +1,4 @@
 from django.contrib import admin
-from entrega_final_app.models import Notas, Usuario, Elementos
+from entrega_final_app.models import Juegos
 
-admin.site.register(Notas)
-admin.site.register(Usuario)
-admin.site.register(Elementos)
+admin.site.register(Juegos)

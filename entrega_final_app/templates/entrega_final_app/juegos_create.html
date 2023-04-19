@@ -1,15 +1,15 @@
 {% extends 'entrega_final_app/base.html'%}
 
 
-{%block titulo%} Alta de usuario {%endblock%}
+{%block titulo%} Carga juegos {%endblock%}
 
 {%block listado%}
 
-<form action="{% url 'usuarios-create' %}" method="POST">
+<form action="{% url 'juegos-create' %}" method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Guardar">
 </form>
 {% endblock %}
 
-{% block title %} Alta usuario {% endblock %}
+{% block title %} Alta de juegos {% endblock %}

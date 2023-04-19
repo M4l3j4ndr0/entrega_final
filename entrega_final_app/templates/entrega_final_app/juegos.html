@@ -1,0 +1,18 @@
+{% extends 'entrega_final_app/base.html'%}
+
+
+{%block titulo%} Listado de juegos {%endblock%}
+
+
+{%block listado%}
+
+
+
+    <ul>
+        {%  for juego in juegos %}
+            <li>{{juego}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block title %} Juegos {% endblock %}

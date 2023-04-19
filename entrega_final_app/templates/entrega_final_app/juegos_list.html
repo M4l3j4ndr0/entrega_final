@@ -1,8 +1,8 @@
 {% extends 'entrega_final_app/base.html' %}
 
-{% block title %} Elementos {% endblock %}
+{% block title %} juegos {% endblock %}
 
-{% block titulo %} Busqueda de elementos por categoria{%endblock%}
+{% block titulo %} Busqueda de juegos por categoria{%endblock%}
 
 {%block listado%}
 
@@ -17,10 +17,10 @@
 </form>
 
 <ul>
-    {% for elemento in elementos %}
-        <li> {{elemento}} </li>
+    {% for juego in juegos %}
+        <li> {{juego}} </li>
     {% endfor %}
 </ul>
 {% endblock %}
 
-{% block endtitle %} Buscar elementos {% endblock %}
+{% block endtitle %} Buscar Juegos {% endblock %}
