@@ -1,0 +1,20 @@
+{% extends 'entrega_final_app/base.html' %}
+
+{% block title %} detalle de juegos {% endblock %}
+
+{% block titulo %} Detalles {%endblock%}
+
+{%block listado%}
+
+
+
+<p>
+    <li> Juego: {{object.nombre}} </li>
+    <li> Categoria: {{object.categoria}} </li>
+    <li> Rating: {{object.rating}} / 10 </li>
+    <li> Opinión personal del juego: {{object.opinion}} </li>
+    <a href="{% url 'juegos' %}"> Volver </a>
+</p>
+{% endblock %}
+
+{% block endtitle %} Buscar Juegos {% endblock %}

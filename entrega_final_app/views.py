@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from entrega_final_app.models import  Juegos #, Post
-from entrega_final_app.forms import   JuegosForm, BuscarJuegosForm
+from entrega_final_app.forms import   JuegosForm , BuscarJuegosForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
@@ -42,7 +42,7 @@ class BuscarJuegos(ListView):
         if f.is_valid():
             return Juegos.objects.filter(categoria__icontains = f.data["criterio_categoria"]).all()
         return Juegos.objects.none()
-    
+
 class JuegosList (ListView):
     model = Juegos
     # trabaja con esto el detail ListView → Juegos.objects.all()
@@ -51,7 +51,7 @@ class JuegosDetail (DetailView):
     model = Juegos
     # trabaja con esto el detail view → Juegos.objects.get(id=pk)
 
-class PostCreate(CreateView):
+class JuegosCreate(CreateView):
     model = Juegos
     success_url = reverse_lazy("juegos-list")
     fields = '__all__' #que campos voy a utilizar para crear

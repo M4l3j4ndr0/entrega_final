@@ -18,7 +18,7 @@
 
 <ul>
     {% for juego in juegos %}
-        <li> {{juego}} </li>
+        <li> {{juego}} </li> <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a>
     {% endfor %}
 </ul>
 {% endblock %}
