@@ -5,6 +5,8 @@ from entrega_final_app.forms import   JuegosForm , BuscarJuegosForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm #, UserChangeForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     return render(request, "entrega_final_app/index.html")
@@ -52,12 +54,12 @@ class JuegosDetail (DetailView):
     model = Juegos
     # trabaja con esto el detail view → Juegos.objects.get(id=pk)
 
-class JuegosCreate(CreateView):
+class JuegosCreate(LoginRequiredMixin, CreateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
     fields = '__all__' #que campos voy a utilizar para crear
 
-class JuegosUpdate(UpdateView):
+class JuegosUpdate(LoginRequiredMixin, UpdateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
     fields = ['tipo', 
@@ -67,7 +69,7 @@ class JuegosUpdate(UpdateView):
              ] 
     #que campos voy a utilizar para modificar
 
-class JuegosDelete(DeleteView):
+class JuegosDelete(LoginRequiredMixin, DeleteView):
     model = Juegos
     success_url = reverse_lazy("juegos")
 
@@ -75,4 +77,10 @@ class SignUp(CreateView):
     form_class = UserCreationForm
     template_name = 'registration/signup.html'
     success_url = reverse_lazy('juegos')
+
+class Login(LoginView):
+    next_page = reverse_lazy('juegos')
+
+class Logout(LogoutView):
+    template_name = 'registration/logout.html'
 

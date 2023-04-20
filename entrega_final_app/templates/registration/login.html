@@ -1,0 +1,15 @@
+{% extends 'entrega_final_app/base.html'%}
+
+{%block titulo%} Ingreso de usuario {%endblock%}
+
+{%block main%}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Ingresar">
+</form>
+
+{% endblock %}
+
+{% block title %} Juegos {% endblock %}
