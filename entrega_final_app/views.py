@@ -4,6 +4,7 @@ from entrega_final_app.models import  Juegos #, Post
 from entrega_final_app.forms import   JuegosForm , BuscarJuegosForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import UserCreationForm #, UserChangeForm
 
 def index(request):
     return render(request, "entrega_final_app/index.html")
@@ -69,3 +70,9 @@ class JuegosUpdate(UpdateView):
 class JuegosDelete(DeleteView):
     model = Juegos
     success_url = reverse_lazy("juegos")
+
+class SignUp(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('juegos')
+

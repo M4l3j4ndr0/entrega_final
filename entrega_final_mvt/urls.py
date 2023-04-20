@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos #,alta_juegos
+from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp #,alta_juegos
 
 urlpatterns = [
     path('', index, name="index"),
@@ -28,5 +28,6 @@ urlpatterns = [
     path('juegos/create',JuegosCreate.as_view(), name = "juegos-create"),
     path('juegos/<pk>/update',JuegosUpdate.as_view(), name = "juegos-update"),
     path('juegos/<pk>/delete',JuegosDelete.as_view(), name = "juegos-delete"),
+    path('signup/',SignUp.as_view(), name = "signup"),
 ]
 

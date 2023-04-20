@@ -1,0 +1,22 @@
+{% extends 'entrega_final_app/base.html'%}
+
+{%block titulo%} Creación de usuario {%endblock%}
+
+{%block main%}
+
+<h5> 
+
+    Complete los datos de acuerdo a lo indicado
+    
+</h5>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrarme">
+    </form>
+
+
+{% endblock %}
+
+{% block title %} Juegos {% endblock %}

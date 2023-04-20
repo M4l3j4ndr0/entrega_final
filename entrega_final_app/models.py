@@ -11,10 +11,10 @@ class Post(models.Model):
         return f"{self.id} -- {self.carousel_caption_title} -- {self.carousel_caption_description}"
    '''
 class Juegos(models.Model):
-    nombre = models.TextField(max_length=50)
-    tipo = models.TextField(max_length=50)
-    rating = models.TextField(max_length=2)
-    categoria = models.TextField(max_length=50)
+    nombre = models.CharField(max_length=50)
+    tipo = models.CharField(max_length=50)
+    rating = models.CharField(max_length=2)
+    categoria = models.CharField(max_length=50)
     opinion = models.TextField(max_length=500)
 
     def __str__(self):
