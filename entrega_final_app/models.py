@@ -15,7 +15,7 @@ class Juegos(models.Model):
     tipo = models.TextField(max_length=50)
     rating = models.TextField(max_length=2)
     categoria = models.TextField(max_length=50)
-    opinion = models.TextField(max_length=100)
+    opinion = models.TextField(max_length=500)
 
     def __str__(self):
         return f"id : {self.id} -- nombre: {self.nombre} -- tipo: {self.tipo} -- rating: {self.rating} / 10 -- categoria: {self.categoria} -- opinion: {self.opinion}"

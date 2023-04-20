@@ -19,7 +19,7 @@ def mostrar_juegos(request):
     }
     return render(request, "entrega_final_app/juegos.html", context)
 
-def alta_juegos(request):
+'''def alta_juegos(request):
     f = JuegosForm(request.POST)
     context = {
         "form": f
@@ -31,7 +31,7 @@ def alta_juegos(request):
     context["juegos"] = Juegos.objects.all()
     context["total_juegos"] = len(Juegos.objects.all())
 
-    return render(request, "entrega_final_app/juegos_create.html", context)
+    return render(request, "entrega_final_app/juegos_create.html", context)'''
 
 class BuscarJuegos(ListView):
     model = Juegos
@@ -53,14 +53,19 @@ class JuegosDetail (DetailView):
 
 class JuegosCreate(CreateView):
     model = Juegos
-    success_url = reverse_lazy("juegos-list")
+    success_url = reverse_lazy("juegos")
     fields = '__all__' #que campos voy a utilizar para crear
 
 class JuegosUpdate(UpdateView):
     model = Juegos
-    success_url = reverse_lazy("juegos-list")
-    fields = '__all__' #que campos voy a utilizar para modificar
+    success_url = reverse_lazy("juegos")
+    fields = ['tipo', 
+              'rating',
+              'categoria',
+              'opinion'
+             ] 
+    #que campos voy a utilizar para modificar
 
 class JuegosDelete(DeleteView):
     model = Juegos
-    success_url = reverse_lazy("juegos-list")
+    success_url = reverse_lazy("juegos")

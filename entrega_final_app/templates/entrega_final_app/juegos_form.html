@@ -3,9 +3,9 @@
 
 {%block titulo%} Carga juegos {%endblock%}
 
-{%block listado%}
+{%block main%}
 
-<form action="{% url 'juegos-create' %}" method="POST">
+<form method="POST">
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Guardar">

@@ -15,16 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from entrega_final_app.views import index, mostrar_juegos, alta_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos
+from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos #,alta_juegos
 
 urlpatterns = [
     path('', index, name="index"),
     path('admin/', admin.site.urls),
     path('juegos/',mostrar_juegos, name = "juegos"),
-    path('juegos/create',alta_juegos, name = "juegos-create"),
+    #path('juegos/create',alta_juegos, name = "juegos-create"),
     path('juegos/list', BuscarJuegos.as_view(), name = "juegos-buscar"), #ver la vista relacionada se puede modificar / eliminar
     path('juegos/list',JuegosList.as_view(), name = "juegos-list"),
     path('juegos/<pk>/detail',JuegosDetail.as_view(), name = "juegos-detail"),
-
+    path('juegos/create',JuegosCreate.as_view(), name = "juegos-create"),
+    path('juegos/<pk>/update',JuegosUpdate.as_view(), name = "juegos-update"),
 ]
 

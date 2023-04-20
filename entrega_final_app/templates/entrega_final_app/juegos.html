@@ -1,7 +1,7 @@
 {% extends 'entrega_final_app/base.html'%}
 
 
-{%block titulo%} Listado de publicaciones {%endblock%}
+{%block titulo%} Listado de juegos {%endblock%}
 
 
 {%block listado%}
@@ -10,7 +10,12 @@
 
     <ul>
         {%  for juego in juegos %}
-            <li>Nombre: {{juego.nombre}} - Tipo: {{juego.tipo}} <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> </li> 
+        <li>
+            Nombre: {{juego.nombre}} - Tipo: {{juego.tipo}} 
+            <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> 
+            -
+            <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
+        </li> 
         {% endfor %}
     </ul>
 {% endblock %}
