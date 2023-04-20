@@ -11,10 +11,12 @@
     <ul>
         {%  for juego in juegos %}
         <li>
-            Nombre: {{juego.nombre}} - Tipo: {{juego.tipo}} 
+            Id_{{juego.id}} - Nombre:  {{juego.nombre}} - Tipo: {{juego.tipo}} 
             <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> 
             -
             <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
+            -
+            <a href="{% url 'juegos-delete' juego.id %}"> Borrar </a>
         </li> 
         {% endfor %}
     </ul>

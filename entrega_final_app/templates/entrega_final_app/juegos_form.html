@@ -9,7 +9,10 @@
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="Guardar">
-</form>
+    
+    <a href="{% url 'juegos' %}"> Volver sin modificar</a>
+</form> 
+
 {% endblock %}
 
 {% block title %} Alta de juegos {% endblock %}

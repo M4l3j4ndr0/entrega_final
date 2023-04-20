@@ -27,5 +27,6 @@ urlpatterns = [
     path('juegos/<pk>/detail',JuegosDetail.as_view(), name = "juegos-detail"),
     path('juegos/create',JuegosCreate.as_view(), name = "juegos-create"),
     path('juegos/<pk>/update',JuegosUpdate.as_view(), name = "juegos-update"),
+    path('juegos/<pk>/delete',JuegosDelete.as_view(), name = "juegos-delete"),
 ]
 
