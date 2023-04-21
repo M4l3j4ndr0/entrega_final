@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp, Login, Logout 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', index, name="index"),
@@ -32,3 +34,4 @@ urlpatterns = [
     path('logout/',Logout.as_view(), name = "logout"),
 ]
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -58,6 +58,7 @@ class JuegosUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
               'rating',
               'categoria',
               'opinion',
+              'imagen',
               #'publisher'
              ] 
     

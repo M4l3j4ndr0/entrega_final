@@ -9,11 +9,19 @@
 
 
 <p>
-    <li> Juego: {{object.nombre}} </li>
+    <h4> Juego: {{object.nombre}} </h4>
+    <br>
+    <img src="{{ object.imagen.url }} " width="320px" height="100%">
+    <br>
+    <br>
     <li> Categoria: {{object.categoria}} </li>
+    <br>
     <li> Rating: {{object.rating}} / 10 </li>
+    <br>
     <li> Opinión personal del juego: {{object.opinion}} </li>
+    <br>
     <li> Autor: {{object.publisher}} </li>
+    <br>
     <a href="{% url 'juegos' %}"> Volver </a>
 </p>
 {% endblock %}
