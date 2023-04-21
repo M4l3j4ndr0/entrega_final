@@ -4,16 +4,13 @@
 {%block titulo%} Listado de juegos {%endblock%}
 
 
-{%block listado%}
-
-
-
+{%block main%}
     <ul>
         {%  for juego in juegos %}
         <li>
             Id_{{juego.id}} - Nombre:  {{juego.nombre}} - Tipo: {{juego.tipo}} 
             <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> 
-            {% if user.is_authenticated %}
+            {% if user.is_authenticated and juego.publisher.id == user.id %}
             -
             <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
             -

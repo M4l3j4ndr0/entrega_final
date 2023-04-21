@@ -17,11 +17,20 @@
 </form>
 
 <ul>
-    {% for juego in juegos %}
-        <li> {{juego}} </li>
-        <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a>
-        <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
-    {% endfor %}
+    <ul>
+        {%  for juego in juegos %}
+        <li>
+            Id_{{juego.id}} - Nombre:  {{juego.nombre}} - Tipo: {{juego.tipo}} 
+            <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> 
+            {% if user.is_authenticated and juego.publisher.id == user.id %}
+            -
+            <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
+            -
+            <a href="{% url 'juegos-delete' juego.id %}"> Borrar </a>
+            {% endif %}
+        </li> 
+        {% endfor %}
+    </ul>
 </ul>
 {% endblock %}
 

@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.forms import UserCreationForm #, UserChangeForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, "entrega_final_app/index.html")
@@ -59,13 +60,21 @@ class JuegosCreate(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy("juegos")
     fields = '__all__' #que campos voy a utilizar para crear
 
+'''            ['nombre',
+              'tipo', 
+              'rating',
+              'categoria',
+              'opinion',
+             ] 
+'''
 class JuegosUpdate(LoginRequiredMixin, UpdateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
     fields = ['tipo', 
               'rating',
               'categoria',
-              'opinion'
+              'opinion',
+              #'publisher'
              ] 
     #que campos voy a utilizar para modificar
 
