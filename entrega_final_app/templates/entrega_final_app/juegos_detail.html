@@ -9,9 +9,15 @@
 
 
 <p>
+
     <h4> Juego: {{object.nombre}} </h4>
     <br>
-    <img src="{{ object.imagen.url }} " width="320px" height="100%">
+    {% load static %}
+    {% if object.imagen.url != null %}
+        <img src="{{ object.imagen.url }} " width="320px" height="100%">
+    {% else %}
+        <img scr="{% static 'entrega_final_app/images/default.png' %}" alt = "Imagen faltante">
+    {% endif %}
     <br>
     <br>
     <li> Categoria: {{object.categoria}} </li>

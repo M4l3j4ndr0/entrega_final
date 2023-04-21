@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp, Login, Logout 
+from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp, Login, Logout, ProfileUpdate, ProfileCreate
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -32,6 +32,8 @@ urlpatterns = [
     path('signup/',SignUp.as_view(), name = "signup"),
     path('login/',Login.as_view(), name = "login"),
     path('logout/',Logout.as_view(), name = "logout"),
+    path('profile/<pk>/update', ProfileUpdate.as_view(), name = "profile-update"), #VER
+    path('profile/create',ProfileCreate.as_view(), name = "profile-create"), #ver profile create 21/04/23 -- modelo
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

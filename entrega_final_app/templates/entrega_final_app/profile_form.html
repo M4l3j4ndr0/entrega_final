@@ -1,0 +1,18 @@
+{% extends 'entrega_final_app/base.html'%}
+
+
+{%block titulo%} Perfil de {{user}} {%endblock%}
+
+{%block main%}
+<br>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Guardar">
+    
+    <a href="{% url 'juegos' %}"> Volver sin modificar</a>
+</form> 
+
+{% endblock %}
+
+{% block title %} Alta de juegos {% endblock %}

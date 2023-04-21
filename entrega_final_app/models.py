@@ -12,3 +12,8 @@ class Juegos(models.Model):
 
     def __str__(self):
         return f"id : {self.id} -- nombre: {self.nombre} -- tipo: {self.tipo} -- rating: {self.rating} / 10 -- categoria: {self.categoria} -- opinion: {self.opinion}"
+
+class Profile(models.Model):
+    user = models.OneToOneField(to=User, on_delete=models.CASCADE, related_name="profile")
+    correo = models.CharField(max_length=100)
+    imagen = models.ImageField(upload_to="profile", null=True, blank=True)

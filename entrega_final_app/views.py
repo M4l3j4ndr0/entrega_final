@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from entrega_final_app.models import  Juegos 
+from entrega_final_app.models import  Juegos, Profile
 from entrega_final_app.forms import   JuegosForm , BuscarJuegosForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -93,3 +93,15 @@ class Login(LoginView):
 class Logout(LogoutView):
     template_name = 'registration/logout.html'
 
+class ProfileCreate(LoginRequiredMixin, CreateView): #VER
+    model = Profile
+    success_url = reverse_lazy("juegos")
+    fields = '__all__' 
+
+class ProfileUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView): #VER
+    model = Profile
+    success_url = reverse_lazy("juegos")
+    fields = '__all__'
+      
+    def test_func(self):
+         return Profile.objects.filter(user=self.request.user).exists()
