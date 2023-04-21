@@ -13,10 +13,12 @@
         <li>
             Id_{{juego.id}} - Nombre:  {{juego.nombre}} - Tipo: {{juego.tipo}} 
             <a href="{% url 'juegos-detail' juego.id %}"> Detalle </a> 
+            {% if user.is_authenticated %}
             -
             <a href="{% url 'juegos-update' juego.id %}"> Actualizar </a>
             -
             <a href="{% url 'juegos-delete' juego.id %}"> Borrar </a>
+            {% endif %}
         </li> 
         {% endfor %}
     </ul>

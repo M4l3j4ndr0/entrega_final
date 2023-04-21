@@ -79,7 +79,7 @@ class SignUp(CreateView):
     success_url = reverse_lazy('juegos')
 
 class Login(LoginView):
-    next_page = reverse_lazy('juegos')
+    next_page = reverse_lazy('index')
 
 class Logout(LogoutView):
     template_name = 'registration/logout.html'
