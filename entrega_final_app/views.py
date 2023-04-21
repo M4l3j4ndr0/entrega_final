@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from entrega_final_app.models import  Juegos #, Post
+from entrega_final_app.models import  Juegos 
 from entrega_final_app.forms import   JuegosForm , BuscarJuegosForm
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import UserCreationForm #, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+
 
 def index(request):
     return render(request, "entrega_final_app/index.html")
@@ -23,20 +23,6 @@ def mostrar_juegos(request):
     }
     return render(request, "entrega_final_app/juegos.html", context)
 
-'''def alta_juegos(request):
-    f = JuegosForm(request.POST)
-    context = {
-        "form": f
-    }
-    if f.is_valid():
-        Juegos(nombre = f.data["nombre"], tipo = f.data["tipo"], categoria = f.data["categoria"], rating = f.data["rating"], opinion = f.data["opinion"]).save()
-        context["form"] = JuegosForm()
-
-    context["juegos"] = Juegos.objects.all()
-    context["total_juegos"] = len(Juegos.objects.all())
-
-    return render(request, "entrega_final_app/juegos_create.html", context)'''
-
 class BuscarJuegos(ListView):
     model = Juegos
     context_object_name = "juegos"
@@ -49,16 +35,14 @@ class BuscarJuegos(ListView):
 
 class JuegosList (ListView):
     model = Juegos
-    # trabaja con esto el detail ListView → Juegos.objects.all()
 
 class JuegosDetail (DetailView):
     model = Juegos
-    # trabaja con esto el detail view → Juegos.objects.get(id=pk)
 
 class JuegosCreate(LoginRequiredMixin, CreateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
-    fields = '__all__' #que campos voy a utilizar para crear
+    fields = '__all__' 
 
 '''            ['nombre',
               'tipo', 
@@ -67,7 +51,7 @@ class JuegosCreate(LoginRequiredMixin, CreateView):
               'opinion',
              ] 
 '''
-class JuegosUpdate(LoginRequiredMixin, UpdateView):
+class JuegosUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
     fields = ['tipo', 
@@ -76,11 +60,26 @@ class JuegosUpdate(LoginRequiredMixin, UpdateView):
               'opinion',
               #'publisher'
              ] 
-    #que campos voy a utilizar para modificar
+    
+    def test_func(self):
+        user_id = self.request.user.id
+        juego_id = self.kwargs.get('pk')
+        return Juegos.objects.filter(publisher = user_id, id = juego_id).exists()
+    
+    def handle_no_permission(self):
+        return render(self.request, 'entrega_final_app/not_found.html')
 
-class JuegosDelete(LoginRequiredMixin, DeleteView):
+class JuegosDelete(LoginRequiredMixin, UserPassesTestMixin,DeleteView):
     model = Juegos
     success_url = reverse_lazy("juegos")
+
+    def test_func(self):
+        user_id = self.request.user.id
+        juego_id = self.kwargs.get('pk')
+        return Juegos.objects.filter(publisher = user_id, id = juego_id).exists()
+
+    def handle_no_permission(self):
+        return render(self.request, 'entrega_final_app/not_found.html')
 
 class SignUp(CreateView):
     form_class = UserCreationForm
