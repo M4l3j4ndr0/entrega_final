@@ -3,6 +3,8 @@
 - Este proyecto simula un foro de entusiastas por el gaming donde pueden compartir sus experiencias, ideasm, rating, recomendaciones y interactuar entre ellos para jugar en multijugadores juntos si así lo desean en un futuro. La idea central del mismo es acercar a la gente que tiene mismos gustos y pasiones.
 - Dentro de los módulos presentes se encuentran: ABM completo tanto de publicaciones como de usuario, sistema de mensajería, listado de mensajes y de publicaciones y agregado de imágenes a las publicaciones y a los usuarios (foto de perfil).
 
+→ Enlace al video subido a YouTube: https://youtu.be/wpz1heJhhJk 
+
 Para poder correr este proyecto es necesario tener instalado python 3.9 o superior. 
 
 ## Paquetes necesarios para la instalación

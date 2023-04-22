@@ -104,15 +104,27 @@ class Logout(LogoutView):
 class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     success_url = reverse_lazy("juegos")
-    fields = '__all__' 
+    fields = ['correo', 
+              'imagen',
+             ] 
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class ProfileUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     success_url = reverse_lazy("juegos")
-    fields = '__all__'
+    fields = ['correo', 
+              'imagen',
+             ] 
       
     def test_func(self):
          return Profile.objects.filter(user=self.request.user).exists()
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 class MensajeCreate(CreateView):
     model = Mensaje
