@@ -47,7 +47,6 @@ class JuegosDetail (DetailView):
 class JuegosCreate(LoginRequiredMixin, CreateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
-    #fields = '__all__' 
     fields = ['nombre',
               'tipo', 
               'rating',
