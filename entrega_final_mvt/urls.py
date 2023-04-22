@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp, Login, Logout, ProfileUpdate, ProfileCreate
+from entrega_final_app.views import index, mostrar_juegos, JuegosList, JuegosDetail, JuegosDelete, JuegosUpdate, JuegosCreate ,BuscarJuegos, SignUp, Login, Logout, ProfileUpdate, ProfileCreate, MensajeCreate, MensajeDelete, MensajeList
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -34,6 +34,9 @@ urlpatterns = [
     path('logout/',Logout.as_view(), name = "logout"),
     path('profile/<pk>/update', ProfileUpdate.as_view(), name = "profile-update"),
     path('profile/create',ProfileCreate.as_view(), name = "profile-create"), 
-]
+    path('mensaje/create',MensajeCreate.as_view(), name = "mensaje-create"),
+    path('mensaje/list',MensajeList.as_view(), name = "mensaje-list"),
+    path('mensaje/<pk>/delete',MensajeDelete.as_view(), name = "mensaje-delete"),
+]   
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

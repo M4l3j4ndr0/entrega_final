@@ -1,0 +1,34 @@
+{% extends 'entrega_final_app/base.html' %}
+
+{% block title %} Mensajes {% endblock %}
+
+{% block titulo %} Mensajeria {%endblock%}
+
+{%block main%}
+
+{% if not mensajes%}
+<h5> No hay mensajes disponibles.</h2>
+{% endif %}
+
+<ul>
+    <ul>
+        {%  for mensaje in mensajes %}
+        <li>
+            <p>{{mensaje.email}}</p>
+            <br>
+            <p>{{mensaje.mensaje}}</p>           
+            <br>
+            {% if user.is_authenticated and mensaje.destinatario == user %}
+                
+                <a href="{% url 'mensaje-delete' mensaje.id %}"> Borrar </a>
+            {% endif %}
+            <br>
+            -----------------------------
+            <br>
+        </li> 
+        {% endfor %}
+    </ul>
+</ul>
+{% endblock %}
+
+{% block endtitle %} Buscar Juegos {% endblock %}

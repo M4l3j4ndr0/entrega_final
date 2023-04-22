@@ -1,0 +1,19 @@
+{% extends 'entrega_final_app/base.html'%}
+
+{%block titulo%} ¡Alerta! - Una vez borrado el mensaje no se puede recuperar{%endblock%}
+
+{%block main%}
+<h5>¿Estas seguro que deseas borrar el mensaje de " {{object.id}} "?</h5>
+<h5>Para borrar permanentemente la publicación presione el botón "Borrar"</h5>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Borrar">
+
+    <a href="{% url 'mensaje-list' %}"> Volver sin borrar</a>
+</form>
+
+{% endblock %}
+
+{% block title %} Alta de juegos {% endblock %}

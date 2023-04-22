@@ -63,39 +63,25 @@
 
     <!-- START THE FEATURETTES -->
 
+    {% for juego in juegos %}
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">{{juego.nombre}}</h2>
+            <p class="lead">{{juego.opinion}}</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            {% if juego.imagen.url != null %}
+                <img src="{{juego.imagen.url}}" height="400" width="400">
+            {% else %}
+                <img scr="{% static 'static/entrega_final_app/images/default.jpg' %}" alt = "No hay imagen para mostrar... aún">
+            {% endif %}
+        </div>
+        </div>
+    {% endfor %}
     
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-    <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">El puente</h2>
-        <p class="lead">vistas lindas del rio</p>
-    </div>
-    <div class="col-md-5 order-md-1">
-        
-        <img src="./curso_coder_house_files/puente-corrientes-resistencia.jpeg" height="400" width="400">
-        
-
-    </div>
-    </div>
-
-    
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-    <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading">Las cataratas</h2>
-        <p class="lead">un destino imperdible</p>
-    </div>
-    <div class="col-md-5 order-md-1">
-        
-        <img src="./curso_coder_house_files/cataratas-del-iguazu-misiones.jpeg" height="400" width="400">
-        
-
-    </div>
-    </div>
-    
-    <!-- /END THE FEATURETTES -->INDEX.
+    <!-- /END THE FEATURETTES -->
 
 </div><!-- /.container -->
 

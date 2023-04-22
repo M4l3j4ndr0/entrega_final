@@ -1,0 +1,18 @@
+{% extends 'entrega_final_app/base.html'%}
+
+
+{%block titulo%} Mensajeria {%endblock%}
+
+{%block main%}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Enviar">
+    
+    <a href="{% url 'juegos' %}"> Volver</a>
+</form> 
+
+{% endblock %}
+
+{% block title %} Mensajeria {% endblock %}

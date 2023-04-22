@@ -66,20 +66,23 @@
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
         {% if user.is_authenticated %}
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">{{user.username}} [Logout]</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">{{user.username}} [Logout]</a>
             <!-- <a class="nav-link disabled" href="https://getbootstrap.com/docs/5.0/examples/carousel/#" tabindex="-1" aria-disabled="true">Disabled</a> || asi estaba inicialmente la linea de arriba -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'juegos-create' %}">[Nueva publicacion]</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'juegos-create' %}">[Nueva publicacion]</a>
         {% else %}
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'login' %}">[Login]</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'login' %}">[Login]</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">[Registrarme]</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">[Registrarme]</a>
         {% endif %}
+        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'mensaje-create' %}">[Enviar un mensaje]</a>
         </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'juegos' %}">[Listado de publicaciones]</a>
