@@ -6,8 +6,6 @@
 
 {%block listado%}
 
-
-
 <p>
 
     <h4> Juego: {{object.nombre}} </h4>
@@ -27,6 +25,8 @@
     <li> Opinión personal del juego: {{object.opinion}} </li>
     <br>
     <li> Autor: {{object.publisher}} </li>
+    <br>
+    <li> Creado el: {{object.creado_el}} </li>
     <br>
     <a href="{% url 'juegos' %}"> Volver </a>
 </p>

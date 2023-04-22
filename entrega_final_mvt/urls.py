@@ -32,8 +32,8 @@ urlpatterns = [
     path('signup/',SignUp.as_view(), name = "signup"),
     path('login/',Login.as_view(), name = "login"),
     path('logout/',Logout.as_view(), name = "logout"),
-    path('profile/<pk>/update', ProfileUpdate.as_view(), name = "profile-update"), #VER
-    path('profile/create',ProfileCreate.as_view(), name = "profile-create"), #ver profile create 21/04/23 -- modelo
+    path('profile/<pk>/update', ProfileUpdate.as_view(), name = "profile-update"),
+    path('profile/create',ProfileCreate.as_view(), name = "profile-create"), 
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,9 +8,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+def about(request):
+    return render(request, "entrega_final_app/about")
 
 def index(request):
-    return render(request, "entrega_final_app/index.html")
+    context = {
+        "juegos": Juegos.objects.all()
+    }
+    return render(request, "entrega_final_app/index.html", context)
 
 def mostrar_juegos(request):
     

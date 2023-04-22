@@ -4,8 +4,12 @@
 {%block titulo%} Listado de juegos {%endblock%}
 
 
-{%block main%}
+{%block listado%}
     <ul>
+        {% if not juegos%}
+            <h2> No hay publicaciones disponibles.</h2>
+        {% endif %}
+        
         {%  for juego in juegos %}
         <li>
             Id_{{juego.id}} - Nombre:  {{juego.nombre}} - Tipo: {{juego.tipo}} 

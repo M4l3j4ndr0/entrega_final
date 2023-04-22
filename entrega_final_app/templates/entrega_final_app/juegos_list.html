@@ -6,6 +6,10 @@
 
 {%block listado%}
 
+{% if not juegos%}
+<h2> No hay publicaciones disponibles.</h2>
+{% endif %}
+
 <form>
     <p>
         <label for = "criterio_categoria"> Criterio:</label>

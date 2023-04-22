@@ -88,6 +88,11 @@
             <a class="nav-link active" aria-current="page" href="{% url 'juegos-list' %}">[Buscar juegos por categoría]</a>
           </li>
         </li>
+        {% if not user.profile.id %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'profile-create' %}">[Editar perfil]</a>
+          </li>
+        {% endif %}
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
