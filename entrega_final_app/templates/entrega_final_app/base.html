@@ -72,6 +72,9 @@
           </li>
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="{% url 'juegos-create' %}">[Nueva publicacion]</a>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'mensaje-list' %}">[Bandeja de entrada]</a>
         {% else %}
           </li>
             <li class="nav-item">
@@ -97,10 +100,6 @@
           </li>
         {% endif %}
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>

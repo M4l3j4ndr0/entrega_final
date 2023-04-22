@@ -47,15 +47,19 @@ class JuegosDetail (DetailView):
 class JuegosCreate(LoginRequiredMixin, CreateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
-    fields = '__all__' 
-
-'''            ['nombre',
+    #fields = '__all__' 
+    fields = ['nombre',
               'tipo', 
               'rating',
               'categoria',
               'opinion',
+              'imagen'
              ] 
-'''
+    def form_valid(self, form):
+        form.instance.publisher = self.request.user
+        return super().form_valid(form)
+
+
 class JuegosUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Juegos
     success_url = reverse_lazy("juegos")
@@ -98,12 +102,12 @@ class Login(LoginView):
 class Logout(LogoutView):
     template_name = 'registration/logout.html'
 
-class ProfileCreate(LoginRequiredMixin, CreateView): #VER
+class ProfileCreate(LoginRequiredMixin, CreateView):
     model = Profile
     success_url = reverse_lazy("juegos")
     fields = '__all__' 
 
-class ProfileUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView): #VER
+class ProfileUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Profile
     success_url = reverse_lazy("juegos")
     fields = '__all__'
@@ -116,13 +120,18 @@ class MensajeCreate(CreateView):
     success_url = reverse_lazy("juegos")
     fields = '__all__'
 
-class MensajeList(ListView):
+class MensajeList(LoginRequiredMixin,ListView):
     model = Mensaje
     context_object_name = "mensajes"
 
     def get_queryset(self):
         return Mensaje.objects.filter(destinatario = self.request.user.id).all()
     
-class MensajeDelete(DeleteView):
+class MensajeDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Mensaje
     success_url = reverse_lazy("mensaje-list")
+
+    def test_func(self):
+        user_id = self.request.user.id
+        mensaje_id = self.kwargs.get('pk')
+        return Mensaje.objects.filter(destinatario = user_id).exists()
